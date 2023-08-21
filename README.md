@@ -1,3 +1,5 @@
+Amazon React clone using Firebase for user authentication and React context API for cart functionality
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
