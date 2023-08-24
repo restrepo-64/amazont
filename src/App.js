@@ -3,40 +3,50 @@
 //import { initializeApp } from "firebase/app";
 //import { getAnalytics } from "firebase/analytics";
 
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
-import Header from './components/Header';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Header from "./components/Header";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import Checkout from "./components/Checkout";
 
 function App() {
   return (
     <Router>
-    <div className="app">
-      <Header />
-      <Routes>
-        <Route path="/checkout" element={<h2>Checkout</h2>}>
-        </Route> 
-        <Route path="/login" element={<h2>Lgin</h2>}>
-        </Route> 
-        {/* this is the default page/route 
+      <div className="app">
+        {/*<Header />  this puts the header on top of EVERY site in navigation map   */}
+        <Routes>
+          <Route path="/checkout" element={
+              <>
+                <Header />
+                <Checkout />
+              </>
+            }
+          ></Route>
+          <Route path="/login" element={<Login />}></Route>
+          {/* this is the default page/route 
         if you want to add wildcard info can just add :variableId to route*/}
-        <Route path="/" element={<h2>HOME PAGE!!</h2>}>
-        </Route> 
-      </Routes>
-    </div>
+          <Route
+            path="/"
+            element={
+              <>
+                <Header />
+                <Home />
+              </>
+            }
+          ></Route>
+        </Routes>
+      </div>
     </Router>
   );
 }
 
 export default App;
 
-
-
-
 // TODO: Add SDKs for Firebase products that you want to use
 
 // https://firebase.google.com/docs/web/setup#available-libraries
-
 
 // Your web app's Firebase configuration
 
