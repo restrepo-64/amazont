@@ -1,5 +1,8 @@
 Amazon React clone using Firebase for user authentication and React context API for cart functionality
 
+Hosted on **Netlify** for your viewing pleasure... please [click here](https://zingy-praline-d6c962.netlify.app/) to view.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
