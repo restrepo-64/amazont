@@ -3,7 +3,7 @@
 //import { initializeApp } from "firebase/app";
 //import { getAnalytics } from "firebase/analytics";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
@@ -11,8 +11,43 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Checkout from "./components/Checkout";
 import Product from "./components/Product";
+import { useStateValue } from "./components/StateProvider";
+import { auth } from "./firebase";
 
 function App() {
+
+  const [{user}, dispatch] = useStateValue();
+
+  //need a piece of code that runs based on a given condition
+  //useEffect gonna be your best friend
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if(user) {
+        //the user is logged in
+        dispatch( {
+          type: "SET_USER",
+          user: user
+        })
+      }
+      else {
+        //the user is logged out
+        dispatch({
+          type: "SET_USER",
+          user: null
+        })
+      }
+    })
+
+    return () => {
+      //any cleanup operations go in here
+      unsubscribe();
+    }
+
+  }, [])
+
+  //console.log("USER IS >>>", user);
+
+
   return (
     <Router>
       <div className="app">
